@@ -1,0 +1,103 @@
+import java.util.*;
+
+public class MyClass {
+    public static void main(String args[]) {
+        
+        //Scanner in = new Scanner(System.in);
+        //System.out.print("Name:");
+        
+        Man person = new Man("Petr", 35); 
+        
+        //person.setName(in.nextLine());
+        
+        //System.out.print("Age:");
+       //person.setAge(Integer.parseInt(in.nextLine()));
+
+        person.getInfo();
+        
+        
+        //System.out.print("Name of Engineer:");
+        
+        Engineer engineer = new Engineer("Ferdi", 38, "google"); 
+        
+        //engineer.setName(in.nextLine());
+        
+        //System.out.print("Age of Engineer:");
+        //engineer.setAge(Integer.parseInt(in.nextLine()));
+        
+        //System.out.print("Company of Engineer:");
+        //engineer.setCompany(in.nextLine());
+
+        engineer.getInfo();
+        
+    }
+}
+
+class Man {
+        
+        private int age;
+        private String name;
+        
+        public String getName() {
+            return name;
+        }
+        
+        public int getAge() {
+            return age;
+        }
+        
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+        public void setAge(int age) {
+            this.age = age;
+        }
+        
+        public Man(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+        
+        public Man() {
+            this.name = null;
+            this.age = 0;
+        }
+        
+        
+        
+        public void getInfo() {
+            
+            System.out.printf("Name: %s, Age: %d. \n", getName(), getAge());
+        }
+        
+        
+    }
+    
+class Engineer extends Man {
+    
+    private String company;
+    
+    public void setCompany(String company){
+        this.company = company;
+    }
+    
+    public String getCompany(){
+        return company;
+    }
+    
+    public Engineer(String name, int age, String company) {
+            super(name, age);
+            this.company = company;
+    }
+    
+    public Engineer() {
+            this.company = null;
+        }
+    
+    @Override
+    public void getInfo() {
+        System.out.printf("\nName: %s, Age: %d, Company: %s", super.getName(), super.getAge(), company);
+        
+    }
+}
