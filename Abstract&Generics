@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+
+public class ListOfPeople {
+    
+    public static void main(String[] args){
+
+        ArrayList<Musician> listOfPeople = new ArrayList<>();
+        
+        listOfPeople.add(new Musician(Gender.M, "Guitar player", Instruments.Guitar, "Peter Parker"));
+        listOfPeople.add(new Musician(Gender.F, "Drum player", Instruments.Drum, "Galina Dreib"));
+        listOfPeople.add(new Musician(Gender.F, "Flute player", Instruments.Flute, "Vika Oliv"));
+        
+        for(Musician target : listOfPeople){
+            
+            System.out.printf("Name: %s, Gender: %s, Profession: %s \n", target.getName(), target.getGender(), target.getProfession());
+            target.work();
+            target.play();
+        }
+        
+    }
+}
+
+
+abstract class Human {
+    
+    private Gender gender;
+    
+    private String profession;
+    
+    public Gender getGender(){
+        return gender;
+    }
+    
+    public String getProfession(){
+        return profession;
+    }
+    
+    public abstract void work();
+    
+    public Human(Gender gender, String profession){
+        
+        this.gender = gender;
+        this.profession = profession;
+        
+    }
+}
+
+enum Gender {
+    
+    F, M
+}
+
+enum Instruments {
+    
+    Guitar, Flute, Drum
+}
+
+class Musician extends Human{
+    
+    private Instruments inst;
+    
+    private String name;
+    
+    public Musician(Gender gender, String profession, Instruments inst, String name){
+        
+        super(gender, profession);
+        this.inst = inst;
+        this.name = name;
+    }
+    
+    public Instruments getInstruments(){
+        return inst;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void play(){
+        
+        System.out.printf("Playing the %s \n", inst);
+    } 
+    
+    @Override
+    public void work(){
+        System.out.printf("I am Musician and I play %s \n", inst);
+    }
+    
+}
